@@ -6,11 +6,9 @@
   "main": "index.js",
   "author": "Brandon Patterson",
   "scripts": {
-    "install:client": "npm install --prefix client",
-    "build:client": "npm run build --prefix client",
-    "client": "npm start --prefix client",
     "start": "node .",
-    "server": "nodemon . --ignore client",
+    "server": "nodemon .",
+    "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "lint": "eslint .",
     "lint:all": "eslint . && npm run lint --prefix client",
@@ -18,7 +16,7 @@
     "format": "npm run prettier -- --write",
     "test": "jest",
     "test:all": "concurrently \"npm run test\" \"npm run test --prefix client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run install:client --dev && npm run build:client"
+    "heroku-postbuild": "npm install --dev --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
