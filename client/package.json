@@ -1,0 +1,43 @@
+{
+  "name": "client",
+  "private": true,
+  "version": "1.0.0",
+  "description": "client",
+  "author": "Brandon Patterson",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "browser-sync": "^2.26.7",
+    "cypress": "^4.3.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-loader": "^4.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "jest": "^25.2.7",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-stream": "^5.2.1"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup/setupTests.js"
+    ],
+    "testEnvironment": "node",
+    "rootDir": "./",
+    "testPathIgnorePatterns": [
+      "<rootDir>/test/setup"
+    ]
+  }
+}

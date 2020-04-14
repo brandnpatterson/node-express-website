@@ -1,0 +1,13 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": "last 2 versions, not <1%"
+        },
+        "debug": false
+      }
+    ]
+  ]
+}

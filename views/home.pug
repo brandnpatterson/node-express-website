@@ -1,0 +1,16 @@
+extends layout
+
+block head
+  link(rel="stylesheet", href="dist/css/home/home.css")
+
+block content
+  #root
+
+  a(href="/login") Log In
+
+  if posts
+    each post in posts
+      h1 #{post.title}
+      p #{post.content}
+block footer
+  script(src='dist/js/home.bundle.js')
