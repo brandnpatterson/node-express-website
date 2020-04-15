@@ -1,4 +1,3 @@
-# node-website
+# node-express-website
 
-Node Website
-.
+Node Express Website

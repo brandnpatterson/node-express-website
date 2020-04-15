@@ -1,8 +1,8 @@
 {
-  "name": "node-website",
+  "name": "node-express-website",
   "private": true,
   "version": "1.0.0",
-  "description": "node-website",
+  "description": "Node Express Website",
   "main": "index.js",
   "author": "Brandon Patterson",
   "scripts": {
