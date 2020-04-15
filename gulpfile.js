@@ -4,24 +4,26 @@ const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const webpack = require('webpack-stream');
+const webpackConfigFile = require('./webpack.config.js');
 
 const paths = {
-  dist: './dist',
-  src: './src',
-  scss: './scss'
+  js: './assets/js',
+  scss: './assets/scss',
+  views: './views',
+  public: './public'
 };
 
 function scriptsTask(webpackConfig) {
   console.log('Building client...');
 
-  return src(`${paths.src}/**/*.js`)
+  return src(`${paths.js}/**/*.js`)
     .pipe(
       webpack({
         ...webpackConfig,
-        ...require('./webpack.config.js')
+        ...webpackConfigFile
       })
     )
-    .pipe(dest(`${paths.dist}/js`))
+    .pipe(dest(`${paths.public}/js`))
     .pipe(browserSync.stream());
 }
 
@@ -31,7 +33,7 @@ function stylesTask(outputStyle) {
     .pipe(sass({ outputStyle }))
     .pipe(autoprefixer({ cascade: false }))
     .pipe(sourcemaps.write('/'))
-    .pipe(dest(`${paths.dist}/css`))
+    .pipe(dest(`${paths.public}/css`))
     .pipe(browserSync.stream());
 }
 
@@ -58,14 +60,16 @@ function stylesDev() {
 
 function watchTask() {
   watch(`${paths.scss}/**/*.scss`, stylesDev);
-  watch(`${paths.src}/**/*.js`, scriptsDev);
+  watch(`${paths.js}/**/*.js`, scriptsDev);
+  watch(`${paths.views}/**/*.hbs`).on('change', browserSync.reload);
 }
 
 function startServer() {
   browserSync.init({
     proxy: 'http://localhost:5000',
     notify: false,
-    online: true
+    online: true,
+    open: false
   });
 
   watchTask();
