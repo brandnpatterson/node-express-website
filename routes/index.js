@@ -4,7 +4,7 @@ const { User } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
-    const users = await User.findAll({ exclude: ['password'] });
+    const users = await User.findAll({ attributes: { exclude: ['password'] } });
 
     res.render('home', {
       title: 'Home',
