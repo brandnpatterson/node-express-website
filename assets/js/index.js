@@ -1,1 +1,1 @@
-console.log('hello, world');
+// client side javascript

@@ -29,5 +29,6 @@ app.use(express.static('public'));
 app.use('/', router);
 
 app.listen(PORT, () => {
+  /* eslint-disable-next-line */
   console.log(`Node is listening at http://localhost:${PORT}`);
 });
